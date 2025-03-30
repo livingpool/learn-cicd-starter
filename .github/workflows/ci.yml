@@ -48,3 +48,6 @@ jobs:
 
       - name: Run staticcheck
         run: staticcheck ./...
+
+      - name: Check if code contains sensitive credentials
+        run: git diff HEAD
