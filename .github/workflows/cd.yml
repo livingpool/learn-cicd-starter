@@ -31,6 +31,9 @@ jobs:
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
 
-      - name: Push to gcloud
+      - name: Push to gcloud artifact registry
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-455301/notely-ar-repo/notely .
+
+      - name: Deploy to gcloud cloud run
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/notely-455301/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project notely-455301 --max-instances=4
       
